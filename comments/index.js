@@ -30,7 +30,7 @@ app.post('/posts/:id/comments', async (req, res) => {
     })
     commentsByPostID[req.params.id] = commentsArr
     // -------- send event to event bus -------- //
-    await axios.post('http://localhost:4005/events', {       
+    await axios.post('http://event-bus-srv:4005/events', {       
         type: 'CommentCreated',
         data: { 
             id: commentID, 
@@ -53,7 +53,7 @@ app.post('/events', async (req, res) => {
         return comment.id === id;
     });
     comment.status = status;  // it's a reference type so we don't need to directly update it in the array
-    await axios.post('http://localhost:4005/events', {
+    await axios.post('http://event-bus-srv:4005/events', {
         type: 'CommentUpdated',
         data: {
             id, 

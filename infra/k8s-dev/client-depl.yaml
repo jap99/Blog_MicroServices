@@ -1,0 +1,49 @@
+#  # THIS FILE IS TO CREATE A DEPLOYMENT
+
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: query-depl
+# spec:
+#   replicas: 1
+#   selector:
+#     matchLabels:
+#       app: query
+#   template:
+#     metadata:
+#       labels:
+#         app: query
+#     spec:
+#       containers:
+#         - name: query
+#           image: jap99/query
+#           # imagePullPolicy: Never
+# ---
+# # selector indicates which Pods to allow access to
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: query-clusterip-srv
+# spec:
+#   selector:
+#     app: query
+#   ports:
+#     - name: query
+#       protocol: TCP
+#       port: 4000
+#       targetPort: 4000
+# ---
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: query-clusterip-srv
+# spec:
+#   selector:
+#     app: query
+#   type: ClusterIP
+#   ports:
+#     - name: query
+#       protocol: TCP
+#       port: 4000
+#       targetPort: 4000
+ 

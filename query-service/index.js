@@ -50,9 +50,24 @@ app.post('/events', (req, res) => {
 
 app.listen(4002, async () => {
   console.log('Listening on 4002 - query service');                 // 4002
-  const res = await axios.get('http://localhost:4005/events');
+  const res = await axios.get('http://event-bus-srv:4005/events');
   for (let event of res.data) { // w/ axios, the response's data is on the .data property
     console.log('Procesing event: ', event.type)
     handleEvent(event.type, event.data);
   }
 });
+
+// app.listen(4002, () => {
+//   console.log('Listening on 4002 - query service');                 // 4002
+//   axios.get('http://event-bus-srv:4005/events').then((res) => {
+//     for (let event of res.data) { // w/ axios, the response's data is on the .data property
+//         console.log('Procesing event: ', event.type)
+//         handleEvent(event.type, event.data);
+//     }
+//   }).catch((err) => {
+//     console.log('--------- ERROR ----------');
+//     console.log(error);
+//     console.log('--------------------------');
+//     return error;
+//   })
+// });

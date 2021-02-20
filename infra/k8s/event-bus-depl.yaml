@@ -1,0 +1,42 @@
+# THIS FILE IS TO CREATE A DEPLOYMENT
+
+# creates pod(s) & deployment object(s)
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: event-bus-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: event-bus
+  template:
+    metadata:
+      labels:
+        app: event-bus
+    spec:
+      containers:
+        - name: event-bus
+          image: jap99/event-bus
+          imagePullPolicy: Never
+---
+# selector tells the services which pods to allow connection to
+# selector says to direct incoming traffic to the pod w/ the label 'app:event-bus'
+# ClusterIP is default type w/ Kubernetes; we could remove type & will still be ClusterIP
+# event-bus service's index.js listens for traffic on port 4005
+apiVersion: v1
+kind: Service
+metadata:
+  name: event-bus-srv
+spec:
+  selector:
+    app: event-bus
+  type: ClusterIP
+  ports:
+    - name: event-bus
+      protocol: TCP
+      port: 4005
+      targetPort: 4005
+
+
+ 

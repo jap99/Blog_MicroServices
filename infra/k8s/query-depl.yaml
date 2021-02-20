@@ -3,34 +3,33 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: posts-depl
+  name: query-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: posts
+      app: query
   template:
     metadata:
       labels:
-        app: posts
+        app: query
     spec:
       containers:
-        - name: posts
-          image: jap99/posts
+        - name: query
+          image: jap99/query
           imagePullPolicy: Never
 ---
-# selector indicates which Pods to allow access to
 apiVersion: v1
 kind: Service
 metadata:
-  name: posts-clusterip-srv
+  name: query-clusterip-srv
 spec:
   selector:
-    app: posts
+    app: query
   type: ClusterIP
   ports:
-    - name: posts
+    - name: query
       protocol: TCP
-      port: 4000
-      targetPort: 4000
+      port: 4002
+      targetPort: 4002
  

@@ -24,7 +24,7 @@ app.post('/posts', async (req, res) => {
     const { title } = req.body
     posts[id] = { id, title }                               // add post to dictionary
     // -------- send event to event bus -------- //
-    await axios.post('http://localhost:4005/events', {      // added await here & async to app.post(/posts,) cuz it's an async operation
+    await axios.post('http://event-bus-srv:4005/events', {      // added await here & async to app.post(/posts,) cuz it's an async operation
         type: 'PostCreated',
         data: { id, title }                                 // data is the post
     })
