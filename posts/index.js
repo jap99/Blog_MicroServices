@@ -41,6 +41,7 @@ app.post('/events', (req, res) => {
 // LOCAL SERVER
 
 app.listen(4000, () => {
+    console.log('--- v3 ---');
     console.log('LISTENING ON 4000 - posts service')
 })
 

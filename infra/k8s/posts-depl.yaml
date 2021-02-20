@@ -14,8 +14,9 @@ spec:
     spec:
       containers:
         - name: posts
-          image: jack7755/posts:0.0.1
-       
+          image: jap99/posts
           # imagePullPolicy: Never
 
-  
+
+ # THIS FILE IS TO CREATE A DEPLOYMENT
+ 

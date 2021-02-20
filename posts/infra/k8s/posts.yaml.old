@@ -1,0 +1,13 @@
+# NO LONGER USING THIS FILE IN THE PROJECT
+# THIS FILE IS TO CREATE A POD
+apiVersion: v1
+kind: Pod
+metadata:
+  name: posts
+spec:
+  containers:
+   - name: posts
+     image: jap99/posts:0.0.1
+
+
+
