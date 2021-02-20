@@ -1,0 +1,25 @@
+# NODE PORT - to expose a pod's port to the outside world (for dev)
+# ports lists the ports to expose
+# 4000 is the port our posts service is listening to
+# port = the port that interfaces with the node port to the outside world
+# target port = where we ultimately send traffic to, which sends it to the Pod
+# port & target port don't have to be identical
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-srv
+spec:
+  type: NodePort
+  selector:
+    app: posts
+  ports:
+    - name: posts
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
+
+# k apply -f posts-srv.yaml
+# apply this file to the cluster
+# then, 'k get services' and use port 30,000-32,000 to access this service
+# ie. localhost:30000/posts
