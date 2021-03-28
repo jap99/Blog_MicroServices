@@ -18,7 +18,7 @@ spec:
       containers:
         - name: event-bus
           image: jap99/event-bus
-          imagePullPolicy: Never
+          imagePullPolicy: Always
 ---
 # selector tells the services which pods to allow connection to
 # selector says to direct incoming traffic to the pod w/ the label 'app:event-bus'

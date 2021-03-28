@@ -19,7 +19,7 @@ app.get('/posts', (req, res) => {
 })
 
 // ---------------- create post ---------------- //
-app.post('/posts', async (req, res) => {     
+app.post('/posts/create', async (req, res) => {     
     const id = randomBytes(4).toString('hex')               // 4 byes of random data (so we can get a string), it'll be hexadecimal
     const { title } = req.body
     posts[id] = { id, title }                               // add post to dictionary

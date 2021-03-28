@@ -17,7 +17,7 @@ spec:
       containers:
         - name: query
           image: jap99/query
-          imagePullPolicy: Never
+          imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service

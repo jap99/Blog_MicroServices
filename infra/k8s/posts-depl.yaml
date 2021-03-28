@@ -17,7 +17,7 @@ spec:
       containers:
         - name: posts
           image: jap99/posts
-          imagePullPolicy: Never
+          imagePullPolicy: Always
 ---
 # selector indicates which Pods to allow access to
 apiVersion: v1

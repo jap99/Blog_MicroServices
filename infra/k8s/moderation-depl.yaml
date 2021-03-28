@@ -17,6 +17,7 @@ spec:
       containers:
         - name: moderation
           image: jap99/moderation
+          imagePullPolicy: Always
 ---
 # selector indicates which Pods to allow access to
 apiVersion: v1
